@@ -16,3 +16,4 @@ class ProductPageLocators:
     Item_Name = (By.CSS_SELECTOR, '[class="col-sm-6 product_main"]>h1')
     Item_Price = (By.CSS_SELECTOR, 'p[class="price_color"]')
     Item_Price_In_Message = (By.XPATH, '//div[@id="messages"]/div[3]/div/p/strong')
+    SUCCESS_MESSAGE = (By.XPATH, '//div[@id="messages"]/div[1]/div[1]')
