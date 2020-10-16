@@ -35,22 +35,21 @@ def test_guest_can_add_item_in_basket(browser, link):
     prod_page.should_be_the_same_item_name_in_basket_and_in_confirmation()
     prod_page.should_match_item_price_and_item_price_in_confirmation()
 
+
 @pytest.mark.skip
 @pytest.mark.xfail
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     prod_page = ProductPage(browser, prod_link)
     prod_page.open()
     prod_page.add_item_in_basket()
-    result = prod_page.is_not_element_presented(*ProductPageLocators.SUCCESS_MESSAGE)
-    assert result is True, 'Guest_can_see_success_message_after_adding_product_to_basket'
+    prod_page.should_not_be_success_message()
 
 
 @pytest.mark.skip
 def test_guest_cant_see_success_message(browser):
     prod_page = ProductPage(browser, prod_link)
     prod_page.open()
-    result = prod_page.is_not_element_presented(*ProductPageLocators.SUCCESS_MESSAGE)
-    assert result is True, "Guest can see success message"
+    prod_page.should_not_be_success_message()
 
 
 @pytest.mark.skip
@@ -59,8 +58,7 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     prod_page = ProductPage(browser, prod_link)
     prod_page.open()
     prod_page.add_item_in_basket()
-    result = prod_page.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE)
-    assert result is True, "Message disappeared after adding product to basket"
+    prod_page.should_be_disappeared_success_message()
 
 
 def test_guest_should_see_login_link_on_product_page(browser):
