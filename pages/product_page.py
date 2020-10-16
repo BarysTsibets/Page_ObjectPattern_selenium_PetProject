@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from .locators import ProductPageLocators
+from .locators import ProductPageLocators, BasketPageLocators
 
 
 class ProductPage(BasePage):
@@ -28,10 +28,10 @@ class ProductPage(BasePage):
     def should_match_item_price_and_item_price_in_confirmation(self):
         item_price = self.browser.find_element(*ProductPageLocators.Item_Price)
         item_price_basket = self.browser.find_element(*ProductPageLocators.Item_Price_In_Message)
-        # print(item_price.text)
-        # print(item_price_basket.text)
         assert item_price.text == item_price_basket.text, \
             "Item price and Item Price in confirmation message different"
+
+
 
 
 
