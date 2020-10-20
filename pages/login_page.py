@@ -1,28 +1,18 @@
-from pages.base_page import BasePage
-from pages.locators import LoginPageLocators
+from .base_page import BasePage
+from .locators import LoginPageLocators
 import faker
 
 link = 'http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209?promo=midsummer'
 
 
-def fake_email_creator():
-    f = faker.Faker()
-    mail = f.mail()
-    return mail
-
-
-EMAIL_1 = fake_email_creator()
-PASW_1 = '123qwe!@#'
-
-
 class LoginPage(BasePage):
     def register_new_user(self, email, password):
         email_field = self.browser.find_element(*LoginPageLocators.Email_Address_Field)
-        email_field.send_key(email)
+        email_field.send_keys(email)
         password_field = self.browser.find_element(*LoginPageLocators.Password_Field)
-        password_field.send_key(password)
+        password_field.send_keys(password)
         confirm_password = self.browser.find_element(*LoginPageLocators.Confirm_Password_Field)
-        confirm_password.send_key(password)
+        confirm_password.send_keys(password)
         self.browser.find_element(*LoginPageLocators.Register_Button).click()
 
     def should_be_login_page(self):
