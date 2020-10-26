@@ -3,7 +3,6 @@ from .pages.login_page import LoginPage
 log_link = 'http://selenium1py.pythonanywhere.com/en-gb/accounts/login/'
 
 
-# Login page tests
 def test_guest_should_see_register_form(browser):
     log_page = LoginPage(browser, log_link)
     log_page.open()
